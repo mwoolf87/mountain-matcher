@@ -1,0 +1,18 @@
+<h1> Welcome to Mountain Matcher </h1>
+
+<div class=".mountains">
+<%  @mountains.each do |mountain| %>
+  <div class=".mountain">
+    <h2 ><%= link_to "#{mountain.name}" , mountain_path(mountain)  %></h2>
+    <span><%= "#{mountain.city_or_town}, #{mountain.state}  #{mountain.zip}" %></span>
+    <p><%= mountain.description %></p>
+
+    <p><%= link_to 'Edit Mountain', edit_mountain_path(mountain) %></p>
+    <p><%= link_to 'Delete Mountain', mountain_path(mountain),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></p>
+  </div>
+  <hr />
+<% end %>
+</div>
+<%= link_to 'add mountains', new_mountain_path %>

@@ -1,0 +1,33 @@
+<h1>Add a Mountain Below!!</h1>
+<%= form_for @mountain do |f| %>
+  <div class="row">
+    <%= f.label :name, 'Mountain' %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="row">
+    <%= f.label :city_or_town %>
+    <%= f.text_field :city_or_town %>
+  </div>
+
+  <div class="row">
+    <%= f.label :state %>
+    <%= f.collection_select(:state, @state_collection, :last, :first, { include_blank: true }) %>
+  </div>
+
+  <div class="row">
+    <%= f.label :zip %>
+    <%= f.text_field :zip %>
+  </div>
+
+  <div class="row">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+
+  <div class="row">
+    <%= f.submit %>
+  </div>
+<% end %>
+<%= link_to 'Back', root_path %>
