@@ -4,14 +4,15 @@
 <%  @mountains.each do |mountain| %>
   <div class=".mountain">
     <h2 ><%= link_to "#{mountain.name}, #{mountain.state}" , mountain_path(mountain)  %></h2>
-
+    <% if current_user && current_user.admin? %>
     <p><%= link_to 'Edit Mountain', edit_mountain_path(mountain) %></p>
     <p><%= link_to 'Delete Mountain', mountain_path(mountain),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></p>
+    <% end %>
   </div>
 
   <hr />
 <% end %>
 </div>
-<%= link_to 'add mountains', new_mountain_path %>
+<%= link_to 'add mountains', new_mountain_path if current_user && current_user.admin? %>
